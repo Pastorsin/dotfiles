@@ -1,0 +1,269 @@
+# Pastorsin's dotfiles
+## Docs: [https://i3wm.org/docs/userguide.html]
+
+# Set WIN key as mod
+set $mod Mod4
+
+
+# Windows
+## Attributes
+font pango:Source Sans Pro 8
+## Control focused window when follows the mouse movements
+# focus_follows_mouse no
+## Borders
+### Window border settings
+default_border          none
+default_floating_border none
+### Hiding borders adjacent to the screen edges
+hide_edge_borders none
+
+
+# Floatting mode
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# set popups during fullscreen mode
+popup_during_fullscreen smart
+
+
+# Bindings
+## Start terminal
+bindsym $mod+Return exec io.elementary.terminal
+## Kill focused window
+bindsym $mod+Shift+q kill
+## Start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+## Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+## Alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+## Move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+## Alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+## Split in horizontal orientation
+bindsym $mod+b split h
+## Split in vertical orientation
+bindsym $mod+v split v
+## Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+## Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+## Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+## Focus the parent container
+bindsym $mod+a focus parent
+## Focus the child container
+bindsym $mod+Shift+a focus child
+## Reload the configuration file
+bindsym $mod+Shift+c reload
+## Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+## Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+# Workspaces
+set $ws1 workspace number 1
+set $ws2 workspace number 2
+set $ws3 workspace number 3
+set $ws4 workspace number 4
+set $ws5 workspace number 5
+set $ws6 workspace number 6
+set $ws7 workspace number 7
+set $ws8 workspace number 8
+set $ws9 workspace number 9
+set $ws10 workspace number 10
+
+set $main_screen eDP-1-1
+set $primary_screen eDP-1-1
+set $secondary_screen eDP-1-1
+
+## Switch to workspace
+bindsym $mod+1 $ws1 output $primary_screen
+bindsym $mod+2 $ws2 output $primary_screen
+bindsym $mod+3 $ws3 output $secondary_screen
+bindsym $mod+4 $ws4 output $secondary_screen
+bindsym $mod+5 $ws5 output $primary_screen
+bindsym $mod+6 $ws6 output $primary_screen
+bindsym $mod+7 $ws7 output $secondary_screen
+bindsym $mod+8 $ws8 output $secondary_screen
+bindsym $mod+9 $ws9 output $primary_screen
+bindsym $mod+0 $ws10 output $main_screen
+## Move focused container to workspace
+bindsym $mod+Shift+1 move container to $ws1
+bindsym $mod+Shift+2 move container to $ws2
+bindsym $mod+Shift+3 move container to $ws3
+bindsym $mod+Shift+4 move container to $ws4
+bindsym $mod+Shift+5 move container to $ws5
+bindsym $mod+Shift+6 move container to $ws6
+bindsym $mod+Shift+7 move container to $ws7
+bindsym $mod+Shift+8 move container to $ws8
+bindsym $mod+Shift+9 move container to $ws9
+bindsym $mod+Shift+0 move container to $ws10
+## Assign program to workspace
+### 1. Terminal
+assign [class="terminal"]               → $ws1
+### 2. Code
+assign [class="Sublime"]                → $ws2
+assign [class="Code"]                   → $ws2
+### 3. Browser
+assign [class="Google-chrome"]          → $ws3
+assign [class="firefox"]                → $ws3
+assign [class="Brave"]                  → $ws3
+### 4. Files
+assign [class="Nautilus"]               → $ws4
+### 5. Chat
+assign [class="Telegram"]               → $ws5
+assign [class="Steam"]                  → $ws5
+### 6. Settings
+assign [class="Gnome-disks"]            → $ws6
+assign [class="^(?i)blueman-*"]         → $ws6
+assign [class="Pavucontrol"]            → $ws6
+assign [class="Gnome-control"]          → $ws6
+assign [class="Hardinfo"]               → $ws6
+assign [class="Arandr"]                 → $ws6
+### 7. Documents
+assign [class="^(?i)libreoffice-*"]     → $ws7
+assign [class="Typora"]                 → $ws7
+assign [class="Evince"]                 → $ws7
+assign [class="Zotero"]                 → $ws7
+### 8. Media
+assign [class="vlc"]                    → $ws8
+assign [class="Spotify-Free"]           → $ws8
+assign [class="Popcorn-Time"]           → $ws8
+### 9. Media design
+assign [class="Gimp"]                   → $ws9
+assign [class="SimpleScreenRecorder"]   → $ws9
+
+
+# Modes
+## Resize
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+    
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym ntilde resize grow width 10 px or 10 ppt
+    
+    # Same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+    
+    # Back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+# Startup
+## Load tweaks gnome settings
+exec_always --no-startup-id /usr/libexec/gsd-xsettings
+## FIXME - Start dunst
+exec killall dunst
+exec_always --no-startup-id dunst -config ~/.config/i3/dunst/dunstrc
+## Window transparency
+exec_always compton --config ~/.config/i3/compton.conf
+## Icons for workspaces
+exec --no-startup-id exec i3-workspace-names-daemon
+## Apps
+exec --no-startup-id exec io.elementary.terminal
+exec --no-startup-id exec code
+exec --no-startup-id exec firefox
+## Monitor
+# exec --no-startup-id utils/monitors/main.sh dual
+## Wallpaper background
+exec --no-startup-id feh --bg-scale ~/Imágenes/background.jpg
+## FIXME - Default output audio
+exec_always --no-startup-id pactl set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo
+## Activate numlock
+exec_always --no-startup-id numlockx on
+
+
+# Shortcuts
+## Screenshots
+set $img_file "~/Imágenes/$(date '+%Y-%m-%d-%l-%M-%S').png"
+bindsym Print exec --no-startup-id maim $img_file
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) $img_file
+bindsym Shift+Print exec --no-startup-id maim --select $img_file
+## Clipboard Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+## Volume controls
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 3+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 3- unmute"
+bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+## Move workspace to other monitor
+bindsym $mod+q move workspace to output left
+
+
+# Status bar [https://github.com/tobi-wan-kenobi/bumblebee-status]
+set $bar_modules cpu pomodoro date time nic pasink pasource battery dunst
+set $bar_time time.format="%H:%M:%S" time.interval=0.5 date.format="%a, %d %b %Y"
+set $bar_network nic.include="enp1s0,wlp2s0" nic.format="{intf} {ssid}"
+set $bar_battery pasink.percent_change=4
+set $bar_theme gruvbox-powerline
+## Status bar of PRIMARY screen
+bar {
+    font pango: FontAwesome, Inconsolata 14
+    position top
+    output $primary_screen
+    status_command bumblebee-status \
+    -m $bar_modules \
+    -p $bar_time $bar_network $bar_battery \
+    -t $bar_theme
+    colors {
+        background #21211e
+        statusline #eeeeee
+        separator #666666
+        #                  border  backgr. text
+        focused_workspace  #403200 #a34900 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
+}
+## Status bar of SECONDARY screen
+bar {
+    font pango: FontAwesome, Inconsolata 14
+    position top
+    output $secondary_screen
+    colors {
+        background #21211e
+        statusline #eeeeee
+        separator #666666
+        #                  border  backgr. text
+        focused_workspace  #403200 #a34900 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+    }
+}
+
+# Client i3
+client.focused #555555 #a19c00 #ffffff #a19c00 #a19c00
