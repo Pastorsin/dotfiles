@@ -11,8 +11,6 @@ ln -f bash/.bashrc ~/.bashrc
 ln -f zsh/.zshrc ~/.zshrc
 ln -f zsh/.zprofile ~/.zprofile
 
-pip3 install thefuck --user
-
 curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -23,7 +21,7 @@ git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "[CONFIG] I3"
-pip3 install --user bumblebee-status i3-workspace-names-daemon
+pip3 install --user bumblebee-status i3-workspace-names-daemon --break-system-packages
 
 mkdir ~/.config/i3
 

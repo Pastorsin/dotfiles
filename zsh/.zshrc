@@ -105,7 +105,6 @@ source $ZSH/oh-my-zsh.sh
 # direnv
 eval "$(direnv hook zsh)"
 # autocomplete fail commands
-eval $(thefuck --alias)
 eval "$(starship init zsh)"
 
 # Pyenv

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo ./bin/dependences.sh
+sudo ./bin/dependencies.sh
 ./bin/config.sh
